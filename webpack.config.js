@@ -29,11 +29,15 @@ var config;
 
 switch (process.env.npm_lifecycle_event) {
   case 'build':
-    config = merge(commom, {});
+    config = merge(
+      commom,
+      parts.setupCSS(PATHS.app)
+    );
     break;
   default:
     config = merge(
       commom,
+      parts.setupCSS(PATHS.app),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT
