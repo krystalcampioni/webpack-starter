@@ -1,0 +1,13 @@
+@import "components/**";
+
+body {
+  background: blue;
+  color: white;
+}
+
+.unusedclass {
+  background: red;
+  &__ahh {
+    color: green
+  }
+}
