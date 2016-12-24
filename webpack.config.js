@@ -3,12 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 
+const parts = require('./libs/parts');
+
 const PATHS = {
   app: path.join(__dirname,  'app'),
   build: path.join(__dirname, 'build')
 };
-
-module.exports = {};
 
 const commom = {
   entry: {
@@ -32,8 +32,13 @@ switch (process.env.npm_lifecycle_event) {
     config = merge(commom, {});
     break;
   default:
-    config = merge(commom, {});
+    config = merge(
+      commom,
+      parts.devServer({
+        host: process.env.HOST,
+        port: process.env.PORT
+      })
+    );
 }
 
-module.exports = config;
 module.exports = validate(config);
