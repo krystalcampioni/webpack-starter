@@ -27,6 +27,6 @@ module.exports = [
   {
     test: /\.(jpg|png)$/,
     exclude: /(node_modules|bower_components)/,
-    loader: 'file?name=[path][name].[hash].[ext]'
+    loader: 'url?limit=25000'
   }
 ];
