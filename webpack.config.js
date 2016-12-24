@@ -15,6 +15,11 @@ const commom = {
   entry: {
     vendor: ['react'],
     style: PATHS.style,
+    // if you need to include css frameworks, remove the top line and replace by:
+    // style: [
+    //   path.join(__dirname, 'node_modules', 'nameoftheframework'),
+    //   path.join(__dirname, 'app', 'main.css')
+    // ]
     app: PATHS.app
   },
   output: {
@@ -52,7 +57,8 @@ switch (process.env.npm_lifecycle_event) {
         entries: ['react']
       }),
       parts.minify(),
-      parts.extractCSS(PATHS.style)
+      parts.extractCSS(PATHS.style),
+      parts.purifyCSS([PATHS.app])
     );
     break;
   default:

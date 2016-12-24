@@ -1,3 +1,7 @@
 body {
   background: lime;
 }
+
+.unusedclass {
+  background: red;
+}
