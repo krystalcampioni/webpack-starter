@@ -9,6 +9,7 @@ const loaders = require('./webpack/loaders');
 const PATHS = {
   app: path.join(__dirname,  'app'),
   style: path.join(__dirname, 'app', 'scss/main.scss'),
+  images: path.join(__dirname, 'app', 'images'),
   build: path.join(__dirname, 'build')
 };
 
