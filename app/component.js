@@ -3,4 +3,4 @@ module.exports = function () {
   var img = require('./images/logo.svg');
   element.innerHTML = '<img src="' + img + '" />';
   return element;
-}
+};
