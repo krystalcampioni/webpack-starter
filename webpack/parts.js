@@ -62,7 +62,7 @@ exports.setupSCSS = function(paths) {
       loaders: [
         {
           test: /\.scss$/,
-          loaders: ['style', 'css', 'postcss', 'import-glob-loader', 'sass' ],
+          loaders: ['style', 'css', 'postcss', 'sass', 'import-glob'],
           include: paths
         }
       ]
@@ -76,7 +76,7 @@ exports.extractSCSS = function(paths) {
       loaders: [
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
+          loader: ExtractTextPlugin.extract('style', 'css!postcss!sass!import-glob'),
           include: paths
         }
       ]
