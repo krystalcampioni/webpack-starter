@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const parts = require('./webpack/parts');
 const loaders = require('./webpack/loaders');
@@ -35,6 +36,11 @@ const commom = {
     loaders
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      files: ['**/*.s?(a|c)ss'],
+      failOnError: false,
+    }),
     new HtmlWebpackPlugin({
       title: 'Webpack demo'
     })

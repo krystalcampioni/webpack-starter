@@ -1,14 +1,15 @@
 @import "components/**";
 
 body {
-  background: lime;
+  background: url('../images/krystal.png');
+  background-color: lime;
   color: white;
   display: flex;
-  background: url('../images/krystal.png');
 }
 
 .unusedclass {
   background: red;
+
   &__ahh {
     color: green
   }
