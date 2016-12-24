@@ -12,11 +12,12 @@ const PATHS = {
 
 const commom = {
   entry: {
+    vendor: ['react'],
     app: PATHS.app
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -38,6 +39,10 @@ switch (process.env.npm_lifecycle_event) {
         'process.env.NODE_ENV',
         'production'
       ),
+      parts.extractBundle({
+        name: 'vendor',
+        entries: ['react']
+      }),
       parts.minify(),
       parts.setupCSS(PATHS.app)
     );
