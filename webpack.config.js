@@ -3,11 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 
-const parts = require('./libs/parts');
+const parts = require('./webpack/parts');
+const loaders = require('./webpack/loaders');
 
 const PATHS = {
   app: path.join(__dirname,  'app'),
   style: path.join(__dirname, 'app', 'scss/main.scss'),
+  images: path.join(__dirname, 'app', 'images'),
   build: path.join(__dirname, 'build')
 };
 
@@ -25,6 +27,12 @@ const commom = {
   output: {
     path: PATHS.build,
     filename: '[name].[hash].js'
+  },
+  resolve: {
+  extensions: ['', '.js', '.jsx']
+  },
+  module: {
+    loaders
   },
   plugins: [
     new HtmlWebpackPlugin({

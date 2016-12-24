@@ -1,5 +1,6 @@
 module.exports = function () {
   var element = document.createElement('header');
-  element.innerHTML = "Hello Wzzzorld";
+  var img = require("./images/logo.svg");
+  element.innerHTML = "<img src='" + img + "' />";
   return element;
 }

@@ -1,0 +1,2 @@
+webpackJsonp([0,3],{0:function(module,exports,__webpack_require__){__webpack_require__(1);var component=__webpack_require__(28);document.body.appendChild(component())},28:function(module,exports,__webpack_require__){module.exports=function(){var element=document.createElement("header"),img=__webpack_require__(29);return element.innerHTML="<img src='"+img+"' />",element}},29:function(module,exports,__webpack_require__){module.exports=__webpack_require__.p+"949616564b39ecbdf8bf39e6d92fd575.svg"}});
+//# sourceMappingURL=app.973b7dd345e2b850ced6.js.map
