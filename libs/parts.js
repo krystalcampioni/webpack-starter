@@ -55,6 +55,38 @@ exports.extractCSS = function(paths) {
   };
 }
 
+exports.setupSCSS = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.scss$/,
+          loaders: ['style', 'css', 'sass'],
+          include: paths
+        }
+      ]
+    }
+  };
+};
+
+exports.extractSCSS = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style', 'css!sass'),
+          include: paths
+        }
+      ]
+    },
+    plugins: [
+      // Output extracted CSS to a file
+      new ExtractTextPlugin('[name].[chunkhash].css')
+    ]
+  };
+};
+
 exports.purifyCSS = function(paths) {
   return {
     plugins: [

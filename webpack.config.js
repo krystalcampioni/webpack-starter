@@ -7,7 +7,7 @@ const parts = require('./libs/parts');
 
 const PATHS = {
   app: path.join(__dirname,  'app'),
-  style: path.join(__dirname, 'app', 'main.css'),
+  style: path.join(__dirname, 'app', 'main.scss'),
   build: path.join(__dirname, 'build')
 };
 
@@ -57,7 +57,7 @@ switch (process.env.npm_lifecycle_event) {
         entries: ['react']
       }),
       parts.minify(),
-      parts.extractCSS(PATHS.style),
+      parts.extractSCSS(PATHS.style),
       parts.purifyCSS([PATHS.app])
     );
     break;
@@ -67,7 +67,7 @@ switch (process.env.npm_lifecycle_event) {
       {
         devtool: 'source-map'
       },
-      parts.setupCSS(PATHS.style),
+      parts.setupSCSS(PATHS.style),
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT
