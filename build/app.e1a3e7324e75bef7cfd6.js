@@ -1,2 +1,0 @@
-webpackJsonp([0,2],{0:function(module,exports,__webpack_require__){__webpack_require__(1),__webpack_require__(5);var component=__webpack_require__(32);document.body.appendChild(component())},1:function(module,exports){},32:function(module,exports){module.exports=function(){var element=document.createElement("h1");return element.innerHTML="Hello Wzzzorld",element}}});
-//# sourceMappingURL=app.e1a3e7324e75bef7cfd6.js.map
