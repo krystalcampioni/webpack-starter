@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 exports.devServer = function(options) {
   return {
@@ -30,6 +31,26 @@ exports.setupCSS = function(paths) {
         }
       ]
     }
+  };
+}
+
+exports.extractCSS = function(paths) {
+  return {
+    module: {
+      loaders: [
+        {
+          test: /\.css$/,
+          include: paths,
+          loader: ExtractTextPlugin.extract(
+            'style-loader',
+            'css-loader'
+          )
+        }
+      ]
+    },
+    plugins: [
+      new ExtractTextPlugin('[name].[chunkhash].css')
+    ]
   };
 }
 
@@ -78,5 +99,5 @@ exports.clean = function(path) {
         root: process.cwd()
       })
     ]
-  };
+  }
 }
