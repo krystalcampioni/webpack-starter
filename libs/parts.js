@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 exports.devServer = function(options) {
   return {
@@ -61,7 +62,7 @@ exports.setupSCSS = function(paths) {
       loaders: [
         {
           test: /\.scss$/,
-          loaders: ['style', 'css', 'sass!import-glob'],
+          loaders: ['style', 'css', 'postcss', 'sass!import-glob'],
           include: paths
         }
       ]
@@ -75,10 +76,13 @@ exports.extractSCSS = function(paths) {
       loaders: [
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('style', 'css!sass!import-glob'),
+          loader: ExtractTextPlugin.extract('style', 'css!postcss!sass!import-glob'),
           include: paths
         }
       ]
+    },
+    postcss: function() {
+      return [autoprefixer];
     },
     plugins: [
       // Output extracted CSS to a file
