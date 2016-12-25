@@ -6,6 +6,9 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const parts = require('./webpack/parts');
 const loaders = require('./webpack/loaders');
+const TARGET = process.env.npm_lifecycle_event;
+
+process.env.BABEL_ENV = TARGET;
 
 const PATHS = {
   app: path.join(__dirname,  'app'),
@@ -42,7 +45,7 @@ const commom = {
       failOnError: false,
     }),
     new HtmlWebpackPlugin({
-      title: 'Webpack demo'
+    	template: './app/template.html'
     })
   ]
 };
